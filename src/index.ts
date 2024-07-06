@@ -26,6 +26,12 @@ io.on("connection", (socket: Socket) => {
         updateElementInElements(elementData);
 
         socket.broadcast.emit('element-update', elementData);
+    });
+
+    socket.on('whiteboard-clear', () => {
+        elements = [];
+
+        socket.broadcast.emit('whiteboard-clear')
     })
 });
 
